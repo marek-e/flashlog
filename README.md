@@ -1,15 +1,3 @@
-<p align="center">
-  <a 
-  href="https://raw.githubusercontent.com/marek-e/flashlog/master/icon_rounded.png" target="_blank" rel="noopener noreferrer">
-    <img width="180" src="https://raw.githubusercontent.com/marek-e/flashlog/master/icon_rounded.png" alt="flashlog logo">
-  </a>
-</p>
-<br/>
-<p align="center">
-  <a href="https://deepwiki.com/marek-e/flashlog"><img src="https://deepwiki.com/badge.svg" alt="Ask DeepWiki"></a>
-</p>
-<br/>
-
 # FlashLog ⚡️
 
 > One-shortcut logging and cleanup — insert smart, language-aware logs instantly, then wipe them out in a flash.
@@ -51,3 +39,13 @@ console.log("file:line user.name:", user.name); // FLASHLOG⚡️
 - `flashlog.removePattern`: marker used to find and delete logs.
 
 > Pro tip: Keep `// FLASHLOG⚡️` (or equivalent comment) in your templates so you can bulk-remove them later.
+
+## Links
+
+- [Marketplace](https://marketplace.visualstudio.com/items?itemName=melmayan.flashlog)
+- [GitHub](https://github.com/marek-e/flashlog)
+- [DeepWiki](https://deepwiki.com/marek-e/flashlog)
+
+## License
+
+MIT

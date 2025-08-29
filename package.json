@@ -2,7 +2,18 @@
   "name": "flashlog",
   "displayName": "FlashLog",
   "description": "One-shortcut logging and cleanup. Insert smart, language-aware logs instantly, then wipe them out in a flash.",
-  "keywords": ["log", "debug", "logging", "debugging", "logging", "debugging", "fast", "polyglot", "flash", "cleanup"],
+  "keywords": [
+    "log",
+    "debug",
+    "logging",
+    "debugging",
+    "logging",
+    "debugging",
+    "fast",
+    "polyglot",
+    "flash",
+    "cleanup"
+  ],
   "author": "Marek Elmayan <melmayan.dev@gmail.com>",
   "homepage": "https://github.com/marek-e/flashlog#readme",
   "repository": {
@@ -11,15 +22,27 @@
   },
   "license": "MIT",
   "version": "0.0.1",
-  "publisher": "your-publisher-id",
+  "publisher": "melmayan",
   "icon": "icon.png",
-  "engines": { "vscode": "^1.103.0" },
-  "categories": ["Debuggers", "Other"],
+  "engines": {
+    "vscode": "^1.103.0"
+  },
+  "categories": [
+    "Logging",
+    "Debuggers",
+    "Other"
+  ],
   "main": "./out/extension.js",
   "contributes": {
     "commands": [
-      { "command": "flashlog.insertLog", "title": "FlashLog: Insert Log" },
-      { "command": "flashlog.removeLogs", "title": "FlashLog: Remove Logs in File" }
+      {
+        "command": "flashlog.insertLog",
+        "title": "FlashLog: Insert Log"
+      },
+      {
+        "command": "flashlog.removeLogs",
+        "title": "FlashLog: Remove Logs in File"
+      }
     ],
     "keybindings": [
       {
@@ -30,8 +53,8 @@
       },
       {
         "command": "flashlog.removeLogs",
-        "key": "ctrl+alt+l+backspace",
-        "mac": "ctrl+alt+l+backspace",
+        "key": "ctrl+alt+shift+l",
+        "mac": "ctrl+alt+shift+l",
         "when": "editorTextFocus && !editorReadonly"
       }
     ],
@@ -40,7 +63,10 @@
       "properties": {
         "flashlog.insertPosition": {
           "type": "string",
-          "enum": ["nextLine", "sameLineEnd"],
+          "enum": [
+            "nextLine",
+            "sameLineEnd"
+          ],
           "default": "nextLine",
           "description": "Where to insert the log."
         },
@@ -101,6 +127,7 @@
   "devDependencies": {
     "@types/vscode": "^1.103.0",
     "@vscode/vsce": "^3.6.0",
+    "ovsx": "^0.10.5",
     "typescript": "^5.9.2"
   }
 }
