@@ -1,0 +1,89 @@
+{
+  "name": "flashlog",
+  "displayName": "FlashLog",
+  "description": "Insert log statements instantly in any language with one shortcut.",
+  "keywords": ["log", "debug", "logging", "debugging", "logging", "debugging", "fast", "polyglot"],
+  "author": "Marek Elmayan <melmayan.dev@gmail.com>",
+  "homepage": "https://github.com/marek-e/flashlog#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marek-e/flashlog.git"
+  },
+  "license": "MIT",
+  "version": "0.0.1",
+  "publisher": "your-publisher-id",
+  "icon": "icon.png",
+  "engines": { "vscode": "^1.85.0" },
+  "categories": ["Debuggers", "Other"],
+  "activationEvents": [
+    "onCommand:flashlog.insertLog",
+    "onCommand:flashlog.removeLogs"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      { "command": "flashlog.insertLog", "title": "FlashLog: Insert Log" },
+      { "command": "flashlog.removeLogs", "title": "FlashLog: Remove Logs in File" }
+    ],
+    "keybindings": [
+      {
+        "command": "flashlog.insertLog",
+        "key": "ctrl+alt+l",
+        "mac": "cmd+alt+l",
+        "when": "editorTextFocus && !editorReadonly"
+      }
+    ],
+    "configuration": {
+      "title": "FlashLog",
+      "properties": {
+        "flashlog.insertPosition": {
+          "type": "string",
+          "enum": ["nextLine", "sameLineEnd"],
+          "default": "nextLine",
+          "description": "Where to insert the log."
+        },
+        "flashlog.includeFileLine": {
+          "type": "boolean",
+          "default": true,
+          "description": "Include filename:line in label."
+        },
+        "flashlog.labelFormat": {
+          "type": "string",
+          "default": "${name}",
+          "description": "Label format (supports ${name})."
+        },
+        "flashlog.languageTemplates": {
+          "type": "object",
+          "default": {
+            "javascript": "console.log('${label}:', ${expr}); // FLASHLOG",
+            "typescript": "console.log('${label}:', ${expr}); // FLASHLOG",
+            "python": "print(f\"{label}: {${expr}}\")  # FLASHLOG"
+          },
+          "description": "Per-language template. Use ${label} and ${expr}."
+        },
+        "flashlog.genericTemplate": {
+          "type": "string",
+          "default": "// ${label}: ${expr} // FLASHLOG",
+          "description": "Fallback template."
+        },
+        "flashlog.removePattern": {
+          "type": "string",
+          "default": "FLASHLOG",
+          "description": "Marker to find/remove logs."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "compile": "tsc -p ./",
+    "watch": "tsc -w -p ./",
+    "package": "vsce package",
+    "publish:vscode": "vsce publish",
+    "publish:ovsx": "ovsx publish -p $OVSX_PAT"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.103.0",
+    "@vscode/vsce": "^3.6.0",
+    "typescript": "^5.9.2"
+  }
+}
