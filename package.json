@@ -1,8 +1,8 @@
 {
   "name": "flashlog",
   "displayName": "FlashLog",
-  "description": "Insert log statements instantly in any language with one shortcut.",
-  "keywords": ["log", "debug", "logging", "debugging", "logging", "debugging", "fast", "polyglot"],
+  "description": "One-shortcut logging and cleanup. Insert smart, language-aware logs instantly, then wipe them out in a flash.",
+  "keywords": ["log", "debug", "logging", "debugging", "logging", "debugging", "fast", "polyglot", "flash", "cleanup"],
   "author": "Marek Elmayan <melmayan.dev@gmail.com>",
   "homepage": "https://github.com/marek-e/flashlog#readme",
   "repository": {
