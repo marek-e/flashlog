@@ -13,12 +13,8 @@
   "version": "0.0.1",
   "publisher": "your-publisher-id",
   "icon": "icon.png",
-  "engines": { "vscode": "^1.85.0" },
+  "engines": { "vscode": "^1.103.0" },
   "categories": ["Debuggers", "Other"],
-  "activationEvents": [
-    "onCommand:flashlog.insertLog",
-    "onCommand:flashlog.removeLogs"
-  ],
   "main": "./out/extension.js",
   "contributes": {
     "commands": [
@@ -29,7 +25,13 @@
       {
         "command": "flashlog.insertLog",
         "key": "ctrl+alt+l",
-        "mac": "cmd+alt+l",
+        "mac": "ctrl+alt+l",
+        "when": "editorTextFocus && !editorReadonly"
+      },
+      {
+        "command": "flashlog.removeLogs",
+        "key": "ctrl+alt+l+backspace",
+        "mac": "ctrl+alt+l+backspace",
         "when": "editorTextFocus && !editorReadonly"
       }
     ],
@@ -55,20 +57,35 @@
         "flashlog.languageTemplates": {
           "type": "object",
           "default": {
-            "javascript": "console.log('${label}:', ${expr}); // FLASHLOG",
-            "typescript": "console.log('${label}:', ${expr}); // FLASHLOG",
-            "python": "print(f\"{label}: {${expr}}\")  # FLASHLOG"
+            "javascript": "console.log('${label}:', ${expr}); // FLASHLOG⚡️",
+            "typescript": "console.log('${label}:', ${expr}); // FLASHLOG⚡️",
+            "python": "print(f\"{label}: {${expr}}\")  # FLASHLOG⚡️",
+            "rust": "println!(\"{label}: {}\", ${expr}); // FLASHLOG⚡️",
+            "go": "fmt.Printf(\"{label}: %v\\n\", ${expr}); // FLASHLOG⚡️",
+            "java": "System.out.println(\"{label}: \" + ${expr}); // FLASHLOG⚡️",
+            "php": "echo \"{label}: \" . ${expr} . \"\\n\"; // FLASHLOG⚡️",
+            "ruby": "puts \"{label}: #{${expr}}\" # FLASHLOG⚡️",
+            "kotlin": "println(\"{label}: ${expr}\") // FLASHLOG⚡️",
+            "elixir": "IO.puts(\"{label}: {${expr}}\") # FLASHLOG⚡️",
+            "erlang": "io:format(\"{label}: ~p~n\", [${expr}]), // FLASHLOG⚡️",
+            "csharp": "Console.WriteLine(\"{label}: {}\", ${expr}); // FLASHLOG⚡️",
+            "lua": "print(\"{label}: \" .. ${expr}) -- FLASHLOG⚡️",
+            "haskell": "putStrLn (\"{label}: \" ++ show ${expr}) -- FLASHLOG⚡️",
+            "scala": "println(\"{label}: \" + ${expr}) // FLASHLOG⚡️",
+            "dart": "print('${label}: ${expr}'); // FLASHLOG⚡️",
+            "c": "printf(\"{label}: %d\\n\", ${expr}); // FLASHLOG⚡️",
+            "cpp": "std::cout << \"{label}: \" << ${expr} << std::endl; // FLASHLOG⚡️"
           },
           "description": "Per-language template. Use ${label} and ${expr}."
         },
         "flashlog.genericTemplate": {
           "type": "string",
-          "default": "// ${label}: ${expr} // FLASHLOG",
+          "default": "// ${label}: ${expr} // FLASHLOG⚡️",
           "description": "Fallback template."
         },
         "flashlog.removePattern": {
           "type": "string",
-          "default": "FLASHLOG",
+          "default": "FLASHLOG⚡️",
           "description": "Marker to find/remove logs."
         }
       }
